@@ -1,0 +1,24 @@
+name: Build deb package
+on: push
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        container: debian:bookworm
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            
+            - name: Deps 
+              run: apt update && apt install libgtkmm-3.0-dev libdbus-glib-1-dev g++ libboost-serialization-dev xserver-xorg-dev gettext intltool
+
+            - name: Build
+              run: make
+
+            - name: Artifact
+              uses: actions/upload-artifact@v3
+              with:
+                name: artifact
+                path: ${{ github.workspace }}/
+
