@@ -2,32 +2,35 @@ name: Build deb package
 on: push
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        container: debian:bookworm
+  build:
+    runs-on: ubuntu-latest
+#    container: debian:bookworm
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-            - name: Build_amd64
-              run: bash build.sh
+      - name: Build_amd64
+        uses: addnab/docker-run-action@v3
+        with:
+          image: debian:bookworm
+          options: -v "${PWD}/artifact:/artifact"
+          run: bash build.sh
 
-            - name: Build_arm64
-              uses: uraimo/run-on-arch-action@v2
-              with:
-                arch: aarch64
-                distro: bookworm
-                setup: |
-                  apt update && apt install sudo docker.io
-                  mkdir -p "${PWD}/artifact"
-                dockerRunArgs: |
-                  --volume "${PWD}/artifact:/artifact"
-                run: bash build.sh
+      - name: Build_arm64
+        uses: uraimo/run-on-arch-action@v2
+        with:
+          arch: aarch64
+          distro: bookworm
+          setup: |
+            mkdir -p "${PWD}/artifact"
+          dockerRunArgs: |
+            --volume "${PWD}/artifact:/artifact"
+          run: bash build.sh
 
-            - name: Artifact
-              uses: actions/upload-artifact@v3
-              with:
-                name: artifact
-                path: ${{ github.workspace }}/artifact/
+      - name: Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: ${{ github.workspace }}/artifact/
 
