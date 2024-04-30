@@ -14,8 +14,8 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: debian:bookworm
-          options: -v ${{ github.workspace }}/artifact:/artifact"
-          run: bash build.sh
+          options: -v ${{ github.workspace }}:/work
+          run: bash /work/build.sh
 
       - name: Build_arm64
         uses: uraimo/run-on-arch-action@v2
