@@ -19,6 +19,7 @@ jobs:
                 arch: aarch64
                 distro: bookworm
                 setup: |
+                  apt update && apt install sudo docker.io
                   mkdir -p "${PWD}/artifact"
                 dockerRunArgs: |
                   --volume "${PWD}/artifact:/artifact"
