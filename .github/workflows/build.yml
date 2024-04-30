@@ -15,7 +15,7 @@ jobs:
         with:
           image: debian:bookworm
           options: -v ${{ github.workspace }}:/work
-          run: bash /work/build.sh
+          run: cd /work && bash build.sh
 
       - name: Build_arm64
         uses: uraimo/run-on-arch-action@v2
