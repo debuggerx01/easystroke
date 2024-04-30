@@ -10,8 +10,19 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
 
-            - name: Build
+            - name: Build_amd64
               run: bash build.sh
+
+            - name: Build_arm64
+              uses: uraimo/run-on-arch-action@v2
+              with:
+                arch: aarch64
+                distro: bookworm
+                setup: |
+                  mkdir -p "${PWD}/artifact"
+                dockerRunArgs: |
+                  --volume "${PWD}/artifact:/artifact"
+                run: bash build.sh
 
             - name: Artifact
               uses: actions/upload-artifact@v3
