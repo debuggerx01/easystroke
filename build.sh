@@ -3,6 +3,7 @@
 apt update
 apt install -y make libgtkmm-3.0-dev libdbus-glib-1-dev g++ libboost-serialization-dev xserver-xorg-dev gettext intltool fakeroot
 
+make clean
 make
 
 if [ -e deb_builder ]; then
