@@ -1,0 +1,6 @@
+easystroke (0.6.0-debuggerx-1) bookworm; urgency=medium
+
+  * All patches applied. (from: https://github.com/MRWITEK/easystroke)
+  * 以 Deepin/UOS 应用打包规范打包
+
+ -- DebuggerX <dx8917312@163.com>  Tue, 30 Apr 2024 09:48:23 +0800

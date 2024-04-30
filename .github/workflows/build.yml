@@ -9,16 +9,13 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v3
-            
-            - name: Deps 
-              run: apt update && apt install -y make libgtkmm-3.0-dev libdbus-glib-1-dev g++ libboost-serialization-dev xserver-xorg-dev gettext intltool
 
             - name: Build
-              run: make
+              run: bash build.sh
 
             - name: Artifact
               uses: actions/upload-artifact@v3
               with:
                 name: artifact
-                path: ${{ github.workspace }}/
+                path: ${{ github.workspace }}/artifact/
 

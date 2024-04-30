@@ -13,11 +13,11 @@
 #  CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #DESTDIR =
-PREFIX   ?= /usr/local
-BINDIR   = $(PREFIX)/bin
-ICONDIR  = $(PREFIX)/share/icons/hicolor/scalable/apps
-MENUDIR  = $(PREFIX)/share/applications
-LOCALEDIR= $(PREFIX)/share/locale
+# PREFIX   ?= /usr/local
+BINDIR   = /opt/apps/net.sourceforge.thjaeger.easystroke/files
+ICONDIR  = /opt/apps/net.sourceforge.thjaeger.easystroke/entries/icons/hicolor/scalable/apps
+MENUDIR  = /opt/apps/net.sourceforge.thjaeger.easystroke/entries/applications
+LOCALEDIR= /opt/apps/net.sourceforge.thjaeger.easystroke/entries/locale
 #DFLAGS  =
 OFLAGS   = -O2
 AOFLAGS  = -O3

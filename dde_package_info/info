@@ -1,0 +1,17 @@
+{
+    "appid": "net.sourceforge.thjaeger.easystroke",
+    "name": "easystroke",
+    "version": "0.6.0-debuggerx-1",
+    "arch": ["amd64"],
+    "permissions": {
+        "autostart": true,
+        "notification": true,
+        "trayicon": true,
+        "clipboard": true,
+        "account": false,
+        "bluetooth": false,
+        "camera": false,
+        "audio_record": false,
+        "installed_apps": false
+    }
+}
